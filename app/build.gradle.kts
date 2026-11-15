@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -51,7 +52,11 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.timber)
-    implementation(libs.androidx.hilt.navigation.compose)
+    // НАВИГАЦИЯ ВЕРСИИ 3 (ПОД СТЕК-ОРИЕНТИРОВАННЫЙ ПОДХОД)
+    implementation(libs.androidx.navigation3.runtime)   // Движок бэкстека
+    implementation(libs.androidx.navigation3.ui)        // Элемент NavDisplay
+    implementation(libs.androidx.navigation3.viewmodel) // Мост для ViewModels
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
