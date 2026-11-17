@@ -1,11 +1,11 @@
 package com.example.bivvy.ui.navigation
 
-import android.app.Dialog
 import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.bivvy.ui.screens.firstscreen.FirstScreen
+import com.example.bivvy.ui.screens.onboarding.OnboardingScreen
+
 
 @Composable
 fun AppNavigation(){
@@ -15,7 +15,7 @@ fun AppNavigation(){
         onBack = {backStack.removeLastOrNull()},
         entryProvider = entryProvider {
             entry<FirstRoute>{
-                FirstScreen()
+                OnboardingScreen()
             }
 
         }

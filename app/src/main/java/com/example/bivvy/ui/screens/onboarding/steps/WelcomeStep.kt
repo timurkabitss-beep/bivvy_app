@@ -1,4 +1,4 @@
-package com.example.bivvy.ui.screens.firstscreen
+package com.example.bivvy.ui.screens.onboarding.steps
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -7,12 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,30 +16,26 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.bivvy.ui.screens.onboarding.components.PulseWaveButton
 import com.example.bivvy.ui.theme.AppGradient
 import com.example.bivvy.ui.theme.Typography
 
 
 @Composable
-fun FirstScreen(modifier: Modifier = Modifier){
-    var showDialog by remember { mutableStateOf(false) }
+fun WelcomeStep(onNext:() -> Unit, modifier: Modifier = Modifier){
+
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(brush = AppGradient)
     ) {
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(top = 90.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(Modifier.height(30.dp))
             Text("Bivvy", style = Typography.displaySmall, color = Color.White)
@@ -53,15 +44,10 @@ fun FirstScreen(modifier: Modifier = Modifier){
         }
 
         PulseWaveButton(
-            onClick = {showDialog = true},
+            onClick = onNext,
             modifier = Modifier.align(Alignment.Center)
         )
-        if (showDialog){
-            DialogNewUser(
-                onConfirm = {showDialog = false},
-                onDismiss = {showDialog = false}
-            )
-        }
+
 
         Text(
             "No internet. No servers. No traces.",
