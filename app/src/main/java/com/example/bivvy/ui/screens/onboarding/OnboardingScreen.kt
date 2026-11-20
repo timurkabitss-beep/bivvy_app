@@ -9,6 +9,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import com.example.bivvy.ui.screens.onboarding.steps.AgreementStep
 import com.example.bivvy.ui.screens.onboarding.steps.NicknameStep
 import com.example.bivvy.ui.screens.onboarding.steps.WelcomeStep
 import com.example.bivvy.ui.theme.AppGradient
@@ -31,7 +32,8 @@ fun OnboardingScreen(){
         ) { page ->
             when(page){
                 0 -> WelcomeStep(onNext = {scope.launch { pager.animateScrollToPage(1) }} )
-                1 -> NicknameStep(onNext = {})
+                1 -> AgreementStep()
+                2 -> NicknameStep(onNext = {})
             }
 
         }

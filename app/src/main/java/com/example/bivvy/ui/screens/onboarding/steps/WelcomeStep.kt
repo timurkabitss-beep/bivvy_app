@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,6 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bivvy.ui.screens.onboarding.components.PulseWaveButton
 import com.example.bivvy.ui.theme.AppGradient
+import com.example.bivvy.ui.theme.Dimens
+import com.example.bivvy.ui.theme.TextHint
+import com.example.bivvy.ui.theme.TextSecondary
 import com.example.bivvy.ui.theme.Typography
 
 
@@ -34,13 +38,12 @@ fun WelcomeStep(onNext:() -> Unit, modifier: Modifier = Modifier){
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 90.dp),
+                .padding(top = Dimens.StepTitleTop),
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(Dimens.TitleSubtitleGap)
         ) {
-            Spacer(Modifier.height(30.dp))
             Text("Bivvy", style = Typography.displaySmall, color = Color.White)
-            Spacer(Modifier.height(8.dp))
-            Text("Closer than it looks", style = Typography.bodyLarge, color = Color.White.copy(alpha = 0.7f))
+            Text("Closer than it looks", style = MaterialTheme.typography.bodyLarge, color = TextSecondary)
         }
 
         PulseWaveButton(
@@ -53,9 +56,9 @@ fun WelcomeStep(onNext:() -> Unit, modifier: Modifier = Modifier){
             "No internet. No servers. No traces.",
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 70.dp),
-            style = Typography.bodyLarge,
-            color = Color.White.copy(alpha = 0.5f)
+                .padding(bottom = Dimens.StepBottomHint),
+            style = MaterialTheme.typography.bodyLarge,
+            color = TextHint
         )
     }
 }

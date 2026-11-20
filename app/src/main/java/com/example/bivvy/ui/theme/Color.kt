@@ -15,10 +15,24 @@ val Pink40 = Color(0xFF7D5260)
 
 //тема приложения
 val blackbox = Color(0xFF000000)
-val bluebox = Color(0xFF003180)
+val bluebox = Color(0xFF002766)
 
 val AppGradient =  Brush.linearGradient(
     colors = listOf(bluebox, blackbox, bluebox),
     start = Offset(0f, 0f),
     end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+)
+
+val GlassEdge = Brush.linearGradient(
+    colors = listOf(
+        Color.White.copy(alpha = 0.55f),   // яркий угол сверху слева
+        Color.White.copy(alpha = 0.05f),   // почти пропадает в середине
+        Color.White.copy(alpha = 0.25f)    // слабый блик снизу справа
+    ),
+    start = Offset(0f, 0f),
+    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+)
+
+val GlassFill = Brush.verticalGradient(
+    listOf(Color.White.copy(alpha = 0.18f), Color.White.copy(alpha = 0.05f))
 )
