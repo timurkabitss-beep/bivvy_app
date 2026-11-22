@@ -16,9 +16,9 @@ import com.example.bivvy.ui.theme.AppGradient
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen(){
+fun OnboardingScreen(onExit: ()-> Unit){
 
-    val pager = rememberPagerState(pageCount = {2})
+    val pager = rememberPagerState(pageCount = {3})
     val scope = rememberCoroutineScope()
     Box(
         modifier = Modifier
@@ -32,7 +32,7 @@ fun OnboardingScreen(){
         ) { page ->
             when(page){
                 0 -> WelcomeStep(onNext = {scope.launch { pager.animateScrollToPage(1) }} )
-                1 -> AgreementStep()
+                1 -> AgreementStep(onAgree = {scope.launch { pager.animateScrollToPage(2) }}, onDecline = onExit)
                 2 -> NicknameStep(onNext = {})
             }
 

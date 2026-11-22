@@ -8,14 +8,14 @@ import com.example.bivvy.ui.screens.onboarding.OnboardingScreen
 
 
 @Composable
-fun AppNavigation(){
+fun AppNavigation(onExit: () -> Unit){
     val backStack = rememberNavBackStack(FirstRoute)
     NavDisplay(
         backStack = backStack,
         onBack = {backStack.removeLastOrNull()},
         entryProvider = entryProvider {
             entry<FirstRoute>{
-                OnboardingScreen()
+                OnboardingScreen(onExit = onExit)
             }
 
         }

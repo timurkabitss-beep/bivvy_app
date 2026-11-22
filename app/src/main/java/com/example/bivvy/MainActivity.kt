@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Transparent
                 ){
-                    AppNavigation()
+                    AppNavigation(onExit = {finish()})
 
                 }
             }

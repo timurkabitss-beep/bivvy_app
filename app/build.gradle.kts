@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.datastore.preferences)
     ksp(libs.hilt.compiler)
     implementation(libs.timber)
     // НАВИГАЦИЯ ВЕРСИИ 3 (ПОД СТЕК-ОРИЕНТИРОВАННЫЙ ПОДХОД)

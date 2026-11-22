@@ -6,10 +6,17 @@ import androidx.compose.ui.unit.dp
 object Dimens {
     // Высота заголовка от верха: одна на все шаги, чтобы он не прыгал при перекате страниц
     val StepTitleTop = 120.dp
+
     val TitleSubtitleGap = 8.dp
 
     val ScreenHorizontal = 32.dp
+
+    val IndentTextBox = 16.dp
+    val TitleIndentText = 6.dp
+    val TitleIndentBox = 32.dp
     val ItemSpacing = 16.dp
+
+    val CardSpacing = 14.dp
 
     val StepBottomHint = 70.dp
 
