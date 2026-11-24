@@ -16,11 +16,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import com.example.bivvy.data.datastore.UserRepository
 import com.example.bivvy.ui.screens.onboarding.components.PrimaryButton
 import com.example.bivvy.ui.theme.Dimens
 import com.example.bivvy.ui.theme.GlassEdge
@@ -28,13 +30,18 @@ import com.example.bivvy.ui.theme.GlassFill
 import com.example.bivvy.ui.theme.GlassShape
 import com.example.bivvy.ui.theme.TextHint
 import com.example.bivvy.ui.theme.TextSecondary
+import kotlinx.coroutines.launch
 
 private const val NICK_MIN = 2
 private const val NICK_MAX = 12
 
 @Composable
-fun NicknameStep(onNext: () -> Unit) {
+fun UsernameStep(
+    onConfirm: (String) -> Unit
+) {
     var username by remember { mutableStateOf("") }
+    val scope = rememberCoroutineScope()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -102,7 +109,9 @@ fun NicknameStep(onNext: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             PrimaryButton(
-                onNext = onNext,
+                onNext = {
+                    onConfirm(username.trim())
+                },
                 text = "Continue",
                 enabled = username.trim().length >= NICK_MIN,
                 modifier = Modifier.fillMaxWidth()

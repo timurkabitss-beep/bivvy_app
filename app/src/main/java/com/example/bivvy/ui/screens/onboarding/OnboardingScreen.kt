@@ -9,15 +9,18 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import com.example.bivvy.data.datastore.UserRepository
 import com.example.bivvy.ui.screens.onboarding.steps.AgreementStep
-import com.example.bivvy.ui.screens.onboarding.steps.NicknameStep
+import com.example.bivvy.ui.screens.onboarding.steps.UsernameStep
 import com.example.bivvy.ui.screens.onboarding.steps.WelcomeStep
 import com.example.bivvy.ui.theme.AppGradient
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen(onExit: ()-> Unit){
-
+fun OnboardingScreen(
+    onExit: ()-> Unit,
+    onUsernameConfirm: (String) -> Unit
+){
     val pager = rememberPagerState(pageCount = {3})
     val scope = rememberCoroutineScope()
     Box(
@@ -31,12 +34,17 @@ fun OnboardingScreen(onExit: ()-> Unit){
             userScrollEnabled = false
         ) { page ->
             when(page){
-                0 -> WelcomeStep(onNext = {scope.launch { pager.animateScrollToPage(1) }} )
-                1 -> AgreementStep(onAgree = {scope.launch { pager.animateScrollToPage(2) }}, onDecline = onExit)
-                2 -> NicknameStep(onNext = {})
+                0 -> WelcomeStep(
+                    onNext = {scope.launch { pager.animateScrollToPage(1) }}
+                )
+                1 -> AgreementStep(
+                    onAgree = {scope.launch { pager.animateScrollToPage(2) }},
+                    onDecline = onExit
+                )
+                2 -> UsernameStep(
+                    onConfirm = onUsernameConfirm
+                )
             }
-
         }
-
     }
 }

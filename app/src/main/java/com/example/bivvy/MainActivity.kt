@@ -8,12 +8,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.bivvy.data.datastore.UserRepository
 import com.example.bivvy.ui.navigation.AppNavigation
 import com.example.bivvy.ui.theme.BivvyTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var userRepository: UserRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,7 +28,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Transparent
                 ){
-                    AppNavigation(onExit = {finish()})
+                    AppNavigation(
+                        onExit = {finish()}
+                    )
 
                 }
             }

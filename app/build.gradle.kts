@@ -57,7 +57,8 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)   // Движок бэкстека
     implementation(libs.androidx.navigation3.ui)        // Элемент NavDisplay
     implementation(libs.androidx.navigation3.viewmodel) // Мост для ViewModels
-
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
